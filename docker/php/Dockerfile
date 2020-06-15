@@ -15,6 +15,7 @@ RUN apt-get update > /dev/null && apt-get install -y \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
     libpng-dev \
+    libsodium-dev \
     zlib1g-dev \
     libicu-dev \
     jpegoptim \
@@ -24,7 +25,10 @@ RUN apt-get update > /dev/null && apt-get install -y \
     nano \
     cron \ 
     libzip-dev \ 
-    nmap
+    nmap 
+
+RUN pecl install mcrypt
+RUN docker-php-ext-enable mcrypt
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
