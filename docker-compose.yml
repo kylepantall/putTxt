@@ -3,6 +3,8 @@ version: '3.7'
 networks:
     puttxt:
         driver: bridge
+volumes:
+    app-data:
 
 services:
 
@@ -47,5 +49,8 @@ services:
             SERVICE_NAME: mysql
         volumes:
             - ./docker/mysql:/docker-entrypoint-initdb.d
+            - app-data:/var/lib/mysql
+        ports:
+            - 3306:3306
         networks:
             - puttxt
