@@ -23,7 +23,8 @@ RUN apt-get update > /dev/null && apt-get install -y \
     libfontconfig \
     nano \
     cron \ 
-    libzip-dev
+    libzip-dev \ 
+    nmap
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -31,7 +32,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install PHP extensions
 RUN docker-php-ext-install intl > /dev/null \
     && docker-php-ext-install zip > /dev/null \
-    && docker-php-ext-install bcmath > /dev/null
+    && docker-php-ext-install bcmath > /dev/null \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install json > /dev/null
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

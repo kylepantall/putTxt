@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -17,3 +18,16 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('create:admin', function () {
+    User::where('email', 'kylepantall@outlook.com')->delete();
+    $user = new User([
+        'name' => 'Kyle Pantall',
+        'email' => 'kylepantall@outlook.com',
+        'password' => 'password1234'
+    ]);
+
+    $user->save();
+    $this->comment('Created admin account');
+});
