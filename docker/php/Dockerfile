@@ -1,24 +1,37 @@
-FROM php:7.4-fpm-alpine
+FROM php:7.4-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
 ARG uid
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update > /dev/null && apt-get install -y \
     git \
-    curl \
+    unzip \
+    libjpeg-dev \
+    libxpm-dev \
+    libwebp-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libmcrypt-dev \
     libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip
+    zlib1g-dev \
+    libicu-dev \
+    jpegoptim \
+    g++ \
+    libxrender1 \
+    libfontconfig \
+    nano \
+    cron \ 
+    libzip-dev
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install intl > /dev/null \
+    && docker-php-ext-install zip > /dev/null \
+    && docker-php-ext-install bcmath > /dev/null
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
