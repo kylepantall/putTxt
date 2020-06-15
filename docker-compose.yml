@@ -54,3 +54,16 @@ services:
             - 3306:3306
         networks:
             - puttxt
+
+    node:
+        build:
+            args:
+                user: kylepantall
+                uid: 1000
+            context: ./docker/node
+            dockerfile: Dockerfile
+        container_name: puttxt-npm
+        volumes:
+            - ./project:/usr/src/
+        networks:
+            - puttxt

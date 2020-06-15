@@ -65860,8 +65860,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/kylepantall/Projects/putTxt/project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/kylepantall/Projects/putTxt/project/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /usr/src/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /usr/src/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
