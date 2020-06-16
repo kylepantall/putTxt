@@ -55,6 +55,16 @@ services:
         networks:
             - puttxt
 
+    mailhog:
+        image: mailhog/mailhog
+        container_name: puttxt_mail
+        restart: unless-stopped
+        ports:
+            - 1025:1025
+            - 8025:8025
+        networks:
+            - puttxt
+
     node:
         build:
             args:
