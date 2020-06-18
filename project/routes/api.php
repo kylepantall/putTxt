@@ -1,5 +1,6 @@
 <?php
 
+use App\UserContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->get('/user/{userId}/content/{contentId}', function ($userId, $contentId) {
+
+    $data = UserContent::all()
+        ->where('id', $contentId)
+        ->where('user_id', $userId);
+
+    return $data->toJson();
+});
+
+// Route::post('/login', 'UserController@login');
+// Route::post('/register', 'UserController@register');
+// Route::get('/logout', 'UserController@logout');

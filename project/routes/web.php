@@ -25,3 +25,7 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
