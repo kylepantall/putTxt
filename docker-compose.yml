@@ -68,7 +68,7 @@ services:
     node:
         build:
             args:
-                user: kylepantall
+                user: root
                 uid: 1000
             context: ./docker/node
             dockerfile: Dockerfile
