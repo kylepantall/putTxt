@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const { default: Main } = require('./components/Main');
+import Main from './main';
 
 require('./bootstrap');
 
